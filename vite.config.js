@@ -1,7 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: '/weekly-ops-report/'
-})
+  base: command === "serve" ? "/" : "/weekly-ops-report/",
+  server: {
+    port: 3000,
+  },
+}));
